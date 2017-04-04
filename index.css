@@ -1,0 +1,13 @@
+span {
+	float: left;
+	padding: 20px;
+	text-align: center;
+	border-style: groove;
+	border-color: lightgrey;
+	margin:10px;
+	border-radius: 5px;
+}
+
+#parentDiv {
+	margin: 200px;
+}

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Simple countdown</title>
+	<link rel="stylesheet" type="text/css" href="index.css">
+</head>
+<body>
+	<div id='parentDiv'>
+		<span id='days'></span>
+		<span id='hours'></span>
+		<span id='minutes'></span>
+		<span id='seconds'></span>
+	</div>
+
+	<script>
+		var finalTime = new Date('April 30, 2017, 00:00:00').getTime();
+
+		// rendering the timer on the DOM
+		var appending = function (str, val) {
+			document.getElementById(str).innerHTML = val + '<br>' + str;
+		}
+		
+		// countdown from an arbritary date
+		var countDown = function (differenceBetTime) {
+			var days, hours, min, sec;
+			days = Math.floor(differenceBetTime / (1000 * 60 * 60 * 24));
+    	hours = Math.floor((differenceBetTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    	minutes = Math.floor((differenceBetTime % (1000 * 60 * 60)) / (1000 * 60));
+    	seconds = Math.floor(( differenceBetTime % (1000 * 60)) / 1000);
+
+    	// calling the append function
+    	appending('days', days);
+    	appending('hours', hours);
+    	appending('minutes', minutes);
+    	appending('seconds', seconds);
+		}
+
+		// calling setInterval which calls countDown function every 60 seconds
+		var timer = setInterval (()=>{
+		  var timeNow = new Date().getTime()
+		  var diffTime = finalTime - timeNow
+		  countDown(diffTime);
+		}, 
+		1000);
+		timer;
+
+	</script>	
+</body>
+</html>
